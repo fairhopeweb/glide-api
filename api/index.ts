@@ -17,14 +17,16 @@ function addCORS(response) {
 }
 
 // This answers the OPTIONS request, which is used for CORS.
-app.options("/full-name", async (request, response) => {
+app.options("/api/full-name", async (request, response) => {
   addCORS(response);
   return response.status(204).send("");
 });
 
 // This is the actual API request
-app.post("/full-name", async (request, response) => {
+app.post("/api/full-name", async (request, response) => {
   addCORS(response);
+
+  console.log(request.body);
 
   // The parameters passed from Glide are in the `params`
   // field of the request body.  Our request takes a single
@@ -33,15 +35,26 @@ app.post("/full-name", async (request, response) => {
     params: { email },
   } = request.body;
 
-  if (email === undefined || email.type !== "string" || !validateEmail(email)) {
+  if (
+    email === undefined ||
+    email.type !== "string" ||
+    !validateEmail(email.value)
+  ) {
     return response.sendStatus(400);
   }
 
-  const { person, company } = await clearbit.Enrichment.find({
-    email,
-    stream: true,
-  });
+  let enrich;
+  try {
+    enrich = await clearbit.Enrichment.find({
+      email: email.value,
+      stream: true,
+    });
+  } catch (error) {
+    console.error(error);
+    return response.sendStatus(400);
+  }
 
+  const { person, company } = enrich;
   if (person === undefined || company === undefined) {
     return response.sendStatus(400);
   }
