@@ -1,4 +1,6 @@
 import express from "express";
+import { validate as validateEmail } from "email-validator";
+
 const clearbit = require("clearbit")(process.env.CLEARBIT);
 
 const app = express();
@@ -31,7 +33,7 @@ app.post("/full-name", async (request, response) => {
     params: { email },
   } = request.body;
 
-  if (email === undefined || email.type !== "string") {
+  if (email === undefined || email.type !== "string" || !validateEmail(email)) {
     return response.sendStatus(400);
   }
 
