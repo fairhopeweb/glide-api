@@ -78,7 +78,9 @@ enrichment("/bio", (enrich) => enrich.person.bio);
 enrichment(
   "/title",
   (enrich) =>
-    `${enrich.person.employment.title}, ${enrich.person.employment.name}`
+    `${enrich.person.employment.title ?? "Employee"}, ${
+      enrich.person.employment.name
+    }`
 );
 
 export default app;
