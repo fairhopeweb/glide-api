@@ -1,0 +1,20 @@
+{
+  "name": "glide-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "vercel dev --listen 3030",
+    "build": "next build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "next": "^10.0.3",
+    "vercel": "^21.0.1"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
