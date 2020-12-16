@@ -1,7 +1,9 @@
-module.exports = (req, res) => {
+const clearbit = require("clearbit")(process.env.CLEARBIT);
+
+export default (req, res) => {
   const {
     query: { name },
-  } = req
+  } = req;
 
-  res.send(`Hello ${name}!`)
-}
+  res.send(`Hello ${name}!`);
+};
