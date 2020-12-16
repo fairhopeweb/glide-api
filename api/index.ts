@@ -74,5 +74,11 @@ function enrichment(path: string, t: (enrichment: Enrichement) => string) {
 
 enrichment("/full-name", (enrich) => enrich.person.name.fullName);
 enrichment("/avatar", (enrich) => enrich.person.avatar);
+enrichment("/bio", (enrich) => enrich.person.bio);
+enrichment(
+  "/title",
+  (enrich) =>
+    `${enrich.person.employment.title}, ${enrich.person.employment.name}`
+);
 
 export default app;
