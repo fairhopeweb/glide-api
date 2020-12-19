@@ -12,7 +12,7 @@ export default glide.api(async (params) => {
     return undefined;
   }
 
-  const number = parseInt(params.number.value, 10);
+  const number = parseInt(numberRaw.value, 10);
   if (number === NaN) {
     return undefined;
   }
