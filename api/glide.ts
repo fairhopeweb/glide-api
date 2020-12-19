@@ -22,7 +22,7 @@ export interface DateTimeValue {
 
 export type Value = StringValue | NumberValue | BooleanValue | DateTimeValue;
 
-export type Params = Record<string, Value>;
+export type Params = Record<string, StringValue>;
 
 function addCORS(response) {
   response.setHeader("Access-Control-Allow-Origin", "*");

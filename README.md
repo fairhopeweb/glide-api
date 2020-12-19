@@ -8,6 +8,11 @@ import * as glide from "./glide";
 export default glide.api(async (params) => {
   const { name } = params;
 
+  // Check that we got a name
+  if (name === undefined) {
+    return undefined;
+  }
+
   return {
     type: "string",
     value: `Hello, ${name.value}!`,
