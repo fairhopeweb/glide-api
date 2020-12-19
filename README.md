@@ -23,3 +23,11 @@ export default glide.api(async (params) => {
 This defines a Glide API endpoint `https://<HOST>/api/hello` that takes a text value `name` and returns the text `Hello, {name}!`, which you would configure in Glide like:
 
 ![](public/column-config.png)
+
+## Deploy
+
+You can deploy this API on Vercel:
+
+```shell
+$ npx vercel
+```
