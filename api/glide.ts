@@ -7,17 +7,17 @@ export interface StringValue {
 
 export interface NumberValue {
   type: "number";
-  value: string;
+  value: number;
 }
 
 export interface BooleanValue {
   type: "boolean";
-  value: string;
+  value: boolean;
 }
 
 export interface DateTimeValue {
   type: "date-time";
-  value: string;
+  value: Date;
 }
 
 export type Value = StringValue | NumberValue | BooleanValue | DateTimeValue;
